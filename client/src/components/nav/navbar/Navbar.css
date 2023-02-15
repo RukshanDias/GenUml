@@ -16,6 +16,7 @@
   flex-flow: row nowrap;
   justify-content: end;
   margin-left: auto;
+  margin-right: 50px;
   row-gap: 70px;
 }
 
@@ -27,12 +28,21 @@
   cursor: pointer;
 }
 
+.profile{
+  display: flex;
+}
+.profile p{
+  font-weight: bold;
+}
+
 /* Profile Icon */
 .profile-circle {
+  position: absolute;
+  top: 12px;
+  right: 50px;
   display: inline-block;
   background-color: #00d53b;
   border-radius: 50%;
-  bottom: 22px;
 }
 
 .circle-inner {

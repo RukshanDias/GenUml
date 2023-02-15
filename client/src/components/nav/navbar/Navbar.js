@@ -20,12 +20,15 @@ function Navbar(props) {
                 <div className='generate'>Generate</div>
 
                 {isLoggedIn ? (
-                    <React.Fragment>
+                    // <React.Fragment>
+                    <div className='profile'>
+                        <p className='profile-name'>Rukshan</p>
                         <div className="profile-circle" onClick={() => setIsAccountBoxOpen(!isAccountBoxOpen)}>
                             <p className="circle-inner">CV</p>
                         </div>
                         {isAccountBoxOpen && <AccountBox />}
-                    </React.Fragment>
+                    </div>
+                    //</React.Fragment>
                 ) : (
                     < div className='login'>Login</div>
                 )}
