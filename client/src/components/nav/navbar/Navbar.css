@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.navbar {
+.nav-bar {
   display: flex;
   flex-flow: row nowrap;
   padding: 20px 30px;
@@ -11,7 +11,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navbar .right {
+.nav-bar .right {
   display: flex;
   flex-flow: row nowrap;
   justify-content: end;
@@ -20,7 +20,7 @@
   row-gap: 70px;
 }
 
-.navbar .right > div {
+.nav-bar .right > div {
   /* flex-grow: 1; */
   text-align: center;
   margin: 0 1.4rem;

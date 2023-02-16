@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css'
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AccountBox from '../accountBox/AccountBox';
 
 function Navbar(props) {
@@ -13,14 +14,13 @@ function Navbar(props) {
     }, []);
 
     return (
-        <div className='navbar'>
+        <div className='nav-bar'>
             <div className='left'>GenUML</div>
             <div className='right'>
                 <div className='about'>About</div>
                 <div className='generate'>Generate</div>
 
                 {isLoggedIn ? (
-                    // <React.Fragment>
                     <div className='profile'>
                         <p className='profile-name'>Rukshan</p>
                         <div className="profile-circle" onClick={() => setIsAccountBoxOpen(!isAccountBoxOpen)}>
@@ -28,9 +28,10 @@ function Navbar(props) {
                         </div>
                         {isAccountBoxOpen && <AccountBox />}
                     </div>
-                    //</React.Fragment>
                 ) : (
-                    < div className='login'>Login</div>
+                    < div className='login'>
+                        <Link to="/sign-in">Login</Link>
+                    </div>
                 )}
 
             </div>

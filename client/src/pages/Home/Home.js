@@ -4,7 +4,7 @@ import Navbar from '../../components/nav/navbar/Navbar'
 const Home = () => {
     return (
         <div>
-            <Navbar />
+            <Navbar isLogin={true} />
             <div className='home-body'>
 
             </div>

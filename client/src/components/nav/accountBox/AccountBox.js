@@ -1,5 +1,6 @@
 import React from 'react'
 import './AccountBox.css'
+import { Link } from 'react-router-dom'
 
 const AccountBox = () => {
   return (
@@ -7,7 +8,9 @@ const AccountBox = () => {
       <ul>
         <li>Account</li>
         <li>Settings</li>
-        <li>Logout</li>
+        <li>
+          <Link to="/sign-in" className='router-link'>Logout</Link>
+        </li>
       </ul>
     </div>
   )
