@@ -12,18 +12,21 @@ def extract_subject_verb_object(paragraph):
         objects = []
         for token in sent:
             if token.dep_ == "ROOT" and token.pos_ == "VERB":
-                verbs.append(token.text)
+                verbs.append(token.lemma_)
                 for subject in token.lefts:
                     if subject.dep_ == "nsubj":
-                        subjects.append(subject.text)
+                        if subject.pos_ != "PRON":
+                            subjects.append(subject.text.lower())
                 for obj in token.rights:
                     if obj.dep_ == "dobj":
-                        objects.append(obj.text)
+                        objects.append(obj.text.lower())
         actors.update(subjects)
         usecases.add(" ".join(verbs + objects))
-    return list(actors), list(usecases)
+    return list(map(str, actors)), list(map(str, usecases))
 
 paragraph = input("Enter a paragraph: ")
-actors, usecases = extract_subject_verb_object(paragraph)
+doc = nlp(paragraph)
+new_paragraph = " ".join([token.text for token in doc if not token.pos_ == "PRON"])
+actors, usecases = extract_subject_verb_object(new_paragraph)
 print("Actors:", actors)
 print("Usecases:", usecases)
