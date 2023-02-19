@@ -2,6 +2,7 @@ import './App.css';
 import Signin from './pages/SignIn/SignIn.js';
 import Home from './pages/Home/Home.js';
 import Signup from './pages/Signup/Signup';
+import UserInput from './pages/UserInput/UserInput';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-in" element={<Signin />} />
           <Route path="/sign-up" element={<Signup />} />
-          {/* <Route path="/products" element={<Products />} />
-      <Route path="/sign-up" element={<SignUp />} /> */}
+          <Route path="/userRequirment" element={<UserInput />} />
+      {/* <Route path="/sign-up" element={<SignUp />} /> */}
         </Routes>
       </Router>
     </div>
