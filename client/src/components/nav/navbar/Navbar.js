@@ -18,7 +18,9 @@ function Navbar(props) {
             <div className='left'>GenUML</div>
             <div className='right'>
                 <div className='about'>About</div>
-                <div className='generate'>Generate</div>
+                <div className='generate'>
+                    <Link to="/userRequirment">Generate</Link>
+                </div>
 
                 {isLoggedIn ? (
                     <div className='profile'>
