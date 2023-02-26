@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/nav/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
+import Edit_items from '../../components/edit_items/Edit_items';
 import { Link } from 'react-router-dom';
 import "./Edit.css"
 
@@ -26,6 +27,7 @@ const Edit = () => {
                         </div>
 
                         {/* text inputs */}
+                        <Edit_items />
 
                         {/* View/Save btns */}
                         <div className='d-flex justify-content-around'>
