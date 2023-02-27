@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../../components/nav/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
+import { Link } from 'react-router-dom';
 import "./Download.css"
 
 const Download = () => {
@@ -22,9 +23,11 @@ const Download = () => {
                     </div>
 
                     <div className="d-flex justify-content-around mt-4">
-                        <button type="button" className="btn btn-success">
-                            <i class="fa-solid fa-pen-to-square"></i> Edit
-                        </button>
+                        <Link to="/edit">
+                            <button type="button" className="btn btn-success">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </button>
+                        </Link>
                         <button type="button" className="btn btn-danger">
                             <i class="fa-regular fa-circle-down"></i> Download
                         </button>
@@ -32,7 +35,7 @@ const Download = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </div>
     )
 }
