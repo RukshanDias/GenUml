@@ -15,7 +15,9 @@ function Navbar(props) {
 
     return (
         <div className='nav-bar'>
-            <div className='left'>GenUML</div>
+            <div className='left'>
+                <Link to='/'>GenUML</Link>
+            </div>
             <div className='right'>
                 <div className='about'>About</div>
                 <div className='generate'>
