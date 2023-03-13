@@ -1,21 +1,28 @@
 <?php
+    
     $firstName = $_POST['fname'];
     $lastName = $_POST['lname'];
     $email = $_POST['email'];
     $userName = $_POST['uname'];
     $password = $_POST['pwd'];
+    $cpassword = $_POST['cpwd'];
 
     //database connection
-    $conn = new mysqli('localhost','root','','dbname');
-    if($conn -> connect_error){
-        die('Connection Failed :'.$conn -> connect_error);
+    $conn = mysqli_connect('localhost','root','','genuml',3308);
+    if(!$conn){
+        die('Connection Failed :'.mysqli_error($conn));
     }else{
-        $statement = $conn -> prepare("INSERT INTO tableName('','','','','')
-        values(?,?,?,?,?,?)");
-        $statement->bind_param("sssss",$firstName,$lastName,$email,$userName,$password);
-        $statement->execute();
-        echo"registration Successfully..";
-        $statement -> close();
-        $conn -> close();
+        if(!empty($firstName) && !empty($lastName) && !empty($email) && !empty($userName) && !is_numeric($firstName) && !is_numeric($lastName) && !is_numeric($userName)) {
+            if($password == $cpassword){
+            $query = "INSERT INTO users (firstName,lastName,emailAddress,userName,password) VALUES ('$firstName','$lastName','$email','$userName','$password')";
+            mysqli_query($conn,$query);
+            echo"registration Successfully..";
+            $conn -> close();
+            } else {
+                echo "check your password";
+            }
+        } else {
+            echo "please fill the form correctly";
+        }
     }
 ?>
