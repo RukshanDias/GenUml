@@ -5,6 +5,50 @@ import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
 
+const isFormValid = (data) => {
+  let isValid = true;
+  // check is empty
+  for (const value of data.values()) {
+      if (value.trim().length == 0) {
+          isValid = false;
+      }
+  }
+  return isValid;
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  // get the form data
+  const data = new FormData(event.target);
+  console.log(data);
+  // check validation
+  if (isFormValid(data)) {
+      sendData(data);
+  } else {
+      alert("invalid inputs");
+  }
+};
+
+const sendData = (data) => {
+  // if validate
+  let formData = new FormData();
+  formData.append("firstName", data.fname);
+  formData.append("lastName", data.lname);
+  formData.append("email", data.email);
+  formData.append("password", data.pass);
+
+  axios
+      .post("http://localhost/GenUML/dbtest.php", data)
+      .then((response) => {
+          console.log(response.data);
+          // alert("new user added");
+      })
+      .catch((error) => {
+          console.log(error);
+          // alert("error occured");
+      });
+};
+
 const SignIn = () => {
     return (
         <div>
