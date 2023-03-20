@@ -4,8 +4,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Define the text to process
-text = "“A customer calls a hair salon to make an appointment for a haircut. The receptionist checks the availability of the hairdresser and schedules the appointment for the next available time slot."
-
+text = "A customer logs into an e-commerce website to purchase a product. The software system checks the availability of the product in stock, processes the payment, and provides the customer with a confirmation of their order."
 # Process the text with the language model
 doc = nlp(text)
 
@@ -25,6 +24,10 @@ def is_subject(token):
 actors = set()
 usecases = set()
 
+# initialize a variable and a dictonary
+activeActor = "";
+actorUsecaseDictionary = {}
+
 # Loop through the tokens in the processed text
 for token in doc:
     # If the token is a verb, and it has an object
@@ -34,11 +37,20 @@ for token in doc:
         obj = [child for child in token.children if is_object(child)][0]
         # Add the chunk to the set of usecases
         usecases.add(f"{verb} {obj}")
+
+        # dictionary part
+        if activeActor not in actorUsecaseDictionary:
+          actorUsecaseDictionary[activeActor] = [(f"{verb} {obj}")]
+        else:
+          actorUsecaseDictionary[activeActor].append(f"{verb} {obj}")
+
     # If the token is a subject
     elif is_subject(token):
         # Add the root form of the subject to the set of actors
         actors.add(token.lemma_.lower())
+        activeActor=token.lemma_.lower() #change active actor
 
 # Print the final sets of chunks
 print("Actors:", actors)
 print("Use Cases:", usecases)
+print("dictionary",actorUsecaseDictionary)
