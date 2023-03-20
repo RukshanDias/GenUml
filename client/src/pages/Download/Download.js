@@ -1,25 +1,40 @@
-import React from 'react'
-import Navbar from '../../components/nav/navbar/Navbar'
-import Footer from '../../components/footer/Footer'
-import { Link } from 'react-router-dom';
-import "./Download.css"
+import React from "react";
+import { useState, useEffect, useContext } from "react";
+import Navbar from "../../components/nav/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
+import { Link } from "react-router-dom";
+import "./Download.css";
+import plantUmlEncoder from "plantuml-encoder";
+import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
 
 const Download = () => {
+    const { responseData } = useContext(DiagramMarkdownContext); // Context
+    const [diagramUrl, setDiagramUrl] = useState("");
+
+    // creating img from plantuml code
+    const encodeDiagram = (plantUmlCode) => {
+        console.log(plantUmlCode);
+        const encodedCode = plantUmlEncoder.encode(plantUmlCode);
+        const url = `http://www.plantuml.com/plantuml/img/${encodedCode}`;
+        return url;
+    };
+
+    // run encodeDiagram fun on page load
+    useEffect(() => {
+        const encodedDiagram = encodeDiagram(responseData);
+        setDiagramUrl(encodedDiagram);
+    }, []);
+
     return (
         <div>
             <Navbar />
-
             <div>
-                <div className='download-container'>
-                    <h2 className='mb-0'>GenUML</h2>
+                <div className="download-container">
+                    <h2 className="mb-0">GenUML</h2>
                     <p>Final output of your use case diagram</p>
 
                     <div className="diagram-container overflow-auto border border-dark border-2 rounded-3">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Use_case_restaurant_model.svg/1200px-Use_case_restaurant_model.svg.png"
-                            alt="generated diagram"
-                            className='p-4'
-                        />
+                        <img src={diagramUrl} alt="generated diagram" className="p-4" />
                     </div>
 
                     <div className="d-flex justify-content-around mt-4">
@@ -37,7 +52,7 @@ const Download = () => {
 
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default Download
+export default Download;
