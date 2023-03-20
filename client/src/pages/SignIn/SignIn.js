@@ -6,47 +6,37 @@ import Footer from "../../components/footer/Footer";
 import axios from "axios";
 
 const isFormValid = (data) => {
-  let isValid = true;
-  // check is empty
-  for (const value of data.values()) {
-      if (value.trim().length == 0) {
-          isValid = false;
-      }
-  }
-  return isValid;
+    let isValid = true;
+    // check is empty
+    for (const value of data.values()) {
+        if (value.trim().length == 0) {
+            isValid = false;
+        }
+    }
+    return isValid;
 };
 
 const handleSubmit = (event) => {
-  event.preventDefault();
-  // get the form data
-  const data = new FormData(event.target);
-  console.log(data);
-  // check validation
-  if (isFormValid(data)) {
-      sendData(data);
-  } else {
-      alert("invalid inputs");
-  }
+    event.preventDefault();
+    // get the form data
+    const data = new FormData(event.target);
+    // check validation
+    if (isFormValid(data)) {
+        sendData(data);
+    } else {
+        alert("invalid inputs");
+    }
 };
 
 const sendData = (data) => {
-  // if validate
-  let formData = new FormData();
-  formData.append("firstName", data.fname);
-  formData.append("lastName", data.lname);
-  formData.append("email", data.email);
-  formData.append("password", data.pass);
-
-  axios
-      .post("http://localhost/GenUML/dbtest.php", data)
-      .then((response) => {
-          console.log(response.data);
-          // alert("new user added");
-      })
-      .catch((error) => {
-          console.log(error);
-          // alert("error occured");
-      });
+    axios
+        .post("http://localhost/GenUML/Login_Register/login.php", data)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
 const SignIn = () => {
@@ -63,13 +53,13 @@ const SignIn = () => {
                     <label className="form-label" htmlFor="email">
                         <i className="fa-regular fa-envelope"></i> Email:
                     </label>
-                    <input type={"email"} id="email" className="form-control border border-4 rounded" />
+                    <input type={"email"} id="email" name="email" className="form-control border border-4 rounded" />
                 </div>
                 <div className="form-outline mb-4">
                     <label className="form-label" htmlFor="pass">
                         <i class="fa fa-lock"></i> Password
                     </label>
-                    <input type={"password"} id="pass" className="form-control border border-4 rounded" />
+                    <input type={"password"} id="pass" name="pass" className="form-control border border-4 rounded" />
                 </div>
 
                 <div className="row mb-4">
