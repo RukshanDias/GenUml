@@ -50,7 +50,7 @@ const sendData = (data) => {
     formData.append("password", data.pass);
 
     axios
-        .post("http://localhost/GenUML/dbtest.php", data)
+        .post("http://localhost/GenUML/Login_Register/register.php", data)
         .then((response) => {
             console.log(response.data);
             // alert("new user added");
