@@ -5,32 +5,49 @@ import Footer from "../../components/footer/Footer";
 import "./Signup.css";
 import axios from "axios";
 
+const isFormValid = (data) => {
+    let isValid = true;
+    // check is empty
+    for (const value of data.values()) {
+        if (value.trim().length == 0) {
+            isValid = false;
+        }
+    }
+
+    // check password condition
+    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+    if (!strongRegex.test(data.get("pass"))) {
+        isValid = false;
+    }
+
+    // check two passwords match
+    if (data.get("pass") != data.get("confirmPass")) {
+        isValid = false;
+    }
+
+    return isValid;
+};
+
 const handleSubmit = (event) => {
     event.preventDefault();
     // get the form data
     const data = new FormData(event.target);
-    console.log(data);
-    // call your function to send the data
-    sendData(data);
+    // check validation
+    if (isFormValid(data)) {
+        sendData(data);
+    } else {
+        alert("invalid inputs");
+    }
 };
 
 const sendData = (data) => {
-    // if validate
-    let formData = new FormData();
-    formData.append("firstName", data.fname);
-    formData.append("lastName", data.lname);
-    formData.append("email", data.email);
-    formData.append("password", data.pass);
-
     axios
-        .post("http://localhost/GenUML/dbtest.php", data)
+        .post("http://localhost/GenUML/Login_Register/register.php", data)
         .then((response) => {
             console.log(response.data);
-            // alert("new user added");
         })
         .catch((error) => {
             console.log(error);
-            // alert("error occured");
         });
 };
 
@@ -80,10 +97,10 @@ const Signup = () => {
                         <input type={"password"} id="pass" name="pass" className="form-control border border-4 rounded" />
                     </div>
                     <div className="form-outline mb-4">
-                        <label className="form-label" htmlFor="pass">
+                        <label className="form-label" htmlFor="confirmPass">
                             Confirm Password
                         </label>
-                        <input type={"password"} id="confirmPass" className="form-control border border-4 rounded" />
+                        <input type={"password"} id="confirmPass" name="confirmPass" className="form-control border border-4 rounded" />
                     </div>
                 </div>
 
