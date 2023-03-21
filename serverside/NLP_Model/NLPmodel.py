@@ -57,4 +57,4 @@ def extractActorsUc(text):
 # Print the final sets of chunks
 # print("Actors:", actors)
 # print("Use Cases:", usecases)
-# print("dictionary",actorUsecaseDictionary)
+#print("dictionary",actorUsecaseDictionary)
