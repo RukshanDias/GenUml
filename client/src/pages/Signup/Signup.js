@@ -8,27 +8,31 @@ import AlertMsg from "../../components/alert/AlertMsg";
 
 const Signup = () => {
     const [showAlert, setShowAlert] = useState(false);
+    const [errorMsg, setErrorMsg] = useState();
+
     const isFormValid = (data) => {
-        let isValid = true;
         // check is empty
         for (const value of data.values()) {
             if (value.trim().length == 0) {
-                isValid = false;
+                setErrorMsg("Pls Fill out all the fileds");
+                return false;
             }
         }
 
         // check password condition
         const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
         if (!strongRegex.test(data.get("pass"))) {
-            isValid = false;
+            setErrorMsg("Password should be 8 charactors long & should've at least 1 Uppercase, Lowercase and number");
+            return false;
         }
 
         // check two passwords match
         if (data.get("pass") != data.get("confirmPass")) {
-            isValid = false;
+            setErrorMsg("Password and Confirm Password don't match");
+            return false;
         }
 
-        return isValid;
+        return true;
     };
 
     const handleSubmit = (event) => {
@@ -40,7 +44,6 @@ const Signup = () => {
             sendData(data);
         } else {
             setShowAlert(true);
-            alert("invalid inputs");
         }
     };
 
@@ -58,7 +61,7 @@ const Signup = () => {
     return (
         <div>
             <Navbar />
-            {showAlert && <AlertMsg type="warning" text="you have a warnign" />}
+            {showAlert && <AlertMsg type="warning" text={errorMsg} />}
             <form onSubmit={handleSubmit} className="register-form py-3 px-5 rounded">
                 <div className="mb-4">
                     <h2>GenUML</h2>
