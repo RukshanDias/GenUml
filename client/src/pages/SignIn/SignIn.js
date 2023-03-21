@@ -1,52 +1,55 @@
 import React from "react";
 import "./SignIn.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
-
-const isFormValid = (data) => {
-    let isValid = true;
-    // check is empty
-    for (const value of data.values()) {
-        if (value.trim().length == 0) {
-            isValid = false;
-        }
-    }
-    return isValid;
-};
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-    // get the form data
-    const data = new FormData(event.target);
-    // check validation
-    if (isFormValid(data)) {
-        sendData(data);
-    } else {
-        alert("invalid inputs");
-    }
-};
-
-const sendData = (data) => {
-    console.log("sending data");
-    axios
-        .post("http://localhost/GenUML/Login_Register/login.php", data)
-        .then((response) => {
-            console.log(response.data);
-            if (response.data) {
-                alert("succesfully logged in");
-                console.log(response.data.email);
-            } else {
-                alert("incorrect");
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
+import AccountContext from "../../context/AccountContext";
 
 const SignIn = () => {
+    const { setAccountData } = useContext(AccountContext); // Context
+    const isFormValid = (data) => {
+        let isValid = true;
+        // check is empty
+        for (const value of data.values()) {
+            if (value.trim().length == 0) {
+                isValid = false;
+            }
+        }
+        return isValid;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // get the form data
+        const data = new FormData(event.target);
+        // check validation
+        if (isFormValid(data)) {
+            sendData(data);
+        } else {
+            alert("invalid inputs");
+        }
+    };
+
+    const sendData = (data) => {
+        console.log("sending data");
+        axios
+            .post("http://localhost/GenUML/Login_Register/login.php", data)
+            .then((response) => {
+                console.log(response.data);
+                setAccountData(response.data);
+                if (response.data) {
+                    alert("succesfully logged in");
+                    console.log(response.data.email);
+                } else {
+                    alert("incorrect");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <div>
             <Navbar />
