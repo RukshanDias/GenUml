@@ -29,10 +29,17 @@ const handleSubmit = (event) => {
 };
 
 const sendData = (data) => {
+    console.log("sending data");
     axios
         .post("http://localhost/GenUML/Login_Register/login.php", data)
         .then((response) => {
             console.log(response.data);
+            if (response.data) {
+                alert("succesfully logged in");
+                console.log(response.data.email);
+            } else {
+                alert("incorrect");
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -83,7 +90,7 @@ const SignIn = () => {
                         <a href="#!">Forgot password?</a>
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary btn-block mb-4">
+                <button type="submit" className="btn btn-primary btn-block mb-4">
                     Sign in
                 </button>
                 {/* Register buttons */}
