@@ -5,9 +5,14 @@ import Navbar from "../../components/nav/navbar/Navbar";
 import "./UserInput.css";
 import axios from "axios";
 import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
+import Loading from "../../components/alert/Loading";
+import AlertMsg from "../../components/alert/AlertMsg";
 
 const UserInput = () => {
     const [formData, setFormData] = useState({});
+    const [showLoading, setShowLoading] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [errorMsg, setErrorMsg] = useState();
     const navigate = useNavigate();
     const { setResponseData } = useContext(DiagramMarkdownContext); // Context
 
@@ -22,11 +27,17 @@ const UserInput = () => {
     // handle generate diagram btn click
     const handleSubmit = (event) => {
         event.preventDefault();
-        sendDataToServer(formData);
+        if (formData["userinput-textarea"]) {
+            sendDataToServer(formData);
+        } else {
+            setErrorMsg("No senarios entered..");
+            setShowAlert(true);
+        }
     };
 
     // sending data to server
     function sendDataToServer(data) {
+        setShowLoading(true);
         const data1 = new FormData();
         data1.append("userinput-textarea", data["userinput-textarea"]);
         console.log(data1);
@@ -35,16 +46,21 @@ const UserInput = () => {
             .then((response) => {
                 console.log("res " + response.data);
                 setResponseData(response.data.link);
+                setShowLoading(false);
                 navigate("/download");
             })
             .catch((error) => {
                 console.log(error);
+                setShowLoading(false);
+                setErrorMsg("error occured.. Pls try again later..");
+                setShowAlert(true);
             });
     }
 
     return (
         <div>
             <Navbar />
+            {showAlert && <AlertMsg type="warning" text={errorMsg} setShowAlert={setShowAlert} />}
             <div>
                 <div className="userInput-container">
                     <h2 className="mb-4">GenUML</h2>
@@ -59,10 +75,11 @@ const UserInput = () => {
                             placeholder="Enter your senario.."
                         ></textarea>
                     </div>
+                    {showLoading && <Loading msg="Generating Diagram" />}
 
                     <div className="d-flex justify-content-around mt-4">
                         <button type="button" className="btn btn-success">
-                            <i class="fa fa-file-arrow-up ms-1"></i> import file
+                            <i className="fa fa-file-arrow-up ms-1"></i> import file
                         </button>
                         <button type="button" className="btn btn-danger" onClick={handleSubmit}>
                             Generate Diagram
