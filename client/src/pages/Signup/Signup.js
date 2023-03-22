@@ -1,60 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "./Signup.css";
 import axios from "axios";
-
-const isFormValid = (data) => {
-    let isValid = true;
-    // check is empty
-    for (const value of data.values()) {
-        if (value.trim().length == 0) {
-            isValid = false;
-        }
-    }
-
-    // check password condition
-    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
-    if (!strongRegex.test(data.get("pass"))) {
-        isValid = false;
-    }
-
-    // check two passwords match
-    if (data.get("pass") != data.get("confirmPass")) {
-        isValid = false;
-    }
-
-    return isValid;
-};
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-    // get the form data
-    const data = new FormData(event.target);
-    // check validation
-    if (isFormValid(data)) {
-        sendData(data);
-    } else {
-        alert("invalid inputs");
-    }
-};
-
-const sendData = (data) => {
-    axios
-        .post("http://localhost/GenUML/Login_Register/register.php", data)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
+import AlertMsg from "../../components/alert/AlertMsg";
+import Loading from "../../components/alert/Loading";
 
 const Signup = () => {
+    const [showAlert, setShowAlert] = useState(false);
+    const [errorMsg, setErrorMsg] = useState();
+    const [showLoading, setShowLoading] = useState(false);
+
+    const isFormValid = (data) => {
+        // check is empty
+        for (const value of data.values()) {
+            if (value.trim().length == 0) {
+                setErrorMsg("Pls Fill out all the fileds");
+                return false;
+            }
+        }
+
+        // check password condition
+        const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+        if (!strongRegex.test(data.get("pass"))) {
+            setErrorMsg("Password should be 8 charactors long & should've at least 1 Uppercase, Lowercase and number");
+            return false;
+        }
+
+        // check two passwords match
+        if (data.get("pass") != data.get("confirmPass")) {
+            setErrorMsg("Password and Confirm Password don't match");
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // get the form data
+        const data = new FormData(event.target);
+        // check validation
+        if (isFormValid(data)) {
+            setShowAlert(false);
+            sendData(data);
+        } else {
+            setShowAlert(true);
+        }
+    };
+
+    const sendData = (data) => {
+        setShowLoading(true);
+        axios
+            .post("http://localhost/GenUML/Login_Register/register.php", data)
+            .then((response) => {
+                console.log(response.data);
+                setShowLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setShowLoading(false);
+                setErrorMsg("error occured in registration.. Pls try again..");
+                setShowAlert(true);
+            });
+    };
+
     return (
         <div>
             <Navbar />
+            {showAlert && <AlertMsg type="warning" text={errorMsg} setShowAlert={setShowAlert} />}
+            {showLoading && <Loading msg="Creating Account" />}
             <form onSubmit={handleSubmit} className="register-form py-3 px-5 rounded">
                 <div className="mb-4">
                     <h2>GenUML</h2>

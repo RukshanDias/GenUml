@@ -1,14 +1,20 @@
 import React from "react";
 import "./SignIn.css";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
 import AccountContext from "../../context/AccountContext";
+import AlertMsg from "../../components/alert/AlertMsg";
+import Loading from "../../components/alert/Loading";
 
 const SignIn = () => {
     const { setAccountData } = useContext(AccountContext); // Context
+    const [showAlert, setShowAlert] = useState(false);
+    const [errorMsg, setErrorMsg] = useState();
+    const [showLoading, setShowLoading] = useState(false);
+
     const isFormValid = (data) => {
         let isValid = true;
         // check is empty
@@ -34,25 +40,33 @@ const SignIn = () => {
 
     const sendData = (data) => {
         console.log("sending data");
+        setShowLoading(true);
         axios
             .post("http://localhost/GenUML/Login_Register/login.php", data)
             .then((response) => {
                 console.log(response.data);
                 setAccountData(response.data);
+                setShowLoading(false);
                 if (response.data) {
                     alert("succesfully logged in");
                     console.log(response.data.email);
                 } else {
-                    alert("incorrect");
+                    setErrorMsg("Invalid Credentials.. Pls try again..");
+                    setShowAlert(true);
                 }
             })
             .catch((error) => {
                 console.log(error);
+                setShowLoading(false);
+                setErrorMsg("Error occured..Pls try again..");
+                setShowAlert(true);
             });
     };
     return (
         <div>
             <Navbar />
+            {showAlert && <AlertMsg type="warning" text={errorMsg} setShowAlert={setShowAlert} />}
+            {showLoading && <Loading msg="Logging" />}
             <form onSubmit={handleSubmit} className="login-form p-4 rounded">
                 <div className="mb-4">
                     <h2>GenUML</h2>
