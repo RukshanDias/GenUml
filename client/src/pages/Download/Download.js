@@ -4,6 +4,7 @@ import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 import "./Download.css";
+import axios from "axios";
 import plantUmlEncoder from "plantuml-encoder";
 import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
 
@@ -25,6 +26,19 @@ const Download = () => {
         setDiagramUrl(encodedDiagram);
     }, []);
 
+    const handleDownload = () => {
+        axios.get(diagramUrl, { responseType: "blob" }).then((response) => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "GenUML_Diagram.png";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        });
+    };
+
     return (
         <div>
             <Navbar />
@@ -43,7 +57,7 @@ const Download = () => {
                                 <i class="fa-solid fa-pen-to-square"></i> Edit
                             </button>
                         </Link>
-                        <button type="button" className="btn btn-danger">
+                        <button type="button" className="btn btn-danger" onClick={handleDownload}>
                             <i class="fa-regular fa-circle-down"></i> Download
                         </button>
                     </div>
