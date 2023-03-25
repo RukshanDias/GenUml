@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import plantUmlEncoder from "plantuml-encoder";
 import axios from "axios";
 import "./Edit.css";
+import AlertMsg from "../../components/alert/AlertMsg";
 import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
 import DiagramDictionaryContext from "../../context/DiagramDictionaryContext";
 
@@ -15,6 +16,7 @@ const Edit = () => {
     const { setResponseData } = useContext(DiagramMarkdownContext); // Context
     const { diagramDictionary } = useContext(DiagramDictionaryContext); // Context
     const [diagramUrl, setDiagramUrl] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
     const childRef = useRef();
 
     // creating img from plantuml code
@@ -49,15 +51,10 @@ const Edit = () => {
             .post("http://localhost/GenUML/editDiagram.php", data)
             .then((response) => {
                 setResponseData(response.data.code);
-                // setDiagramDictionary(JSON.parse(response.data.dictionary));
-                // setShowLoading(false);
-                // navigate("/download");
             })
             .catch((error) => {
                 console.log(error);
-                // setShowLoading(false);
-                // setErrorMsg("error occured.. Pls try again later..");
-                // setShowAlert(true);
+                setShowAlert(true);
             });
     };
 
@@ -72,7 +69,7 @@ const Edit = () => {
     return (
         <div>
             <Navbar />
-
+            {showAlert && <AlertMsg type="warning" text="Error occured.. pls try again.." setShowAlert={setShowAlert} />}
             <div className="mb-4">
                 <h2>Edit your diagram</h2>
                 <div className="main-container d-flex justify-content-center border border-5 rounded p-3">
