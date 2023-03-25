@@ -6,13 +6,40 @@ access classes,Not Use case
 access internet,Use case
 access platform,Use case
 access program,Use case
+access records,Use case
+access room,Use case
+access service,Use case
+access therapy,Use case
+access tickets,Use case
+add effects,Use case
+add employees,Use case
+add event,Use case
+add friends,Use case
+add images,Use case
+add income,Use case
+add information,Use case
 add ingredients,Not Use case
+add instruments,Use case
+add it,Use case
+add item,Use case
+add medication,Use case
+add music,Use case
 add one,Not Use case
+add patterns,Use case
 add pet,Not Use case
+add product,Use case
+add requests,Use case
+add services,Use case
+add them,Use case
+add ticket,Use case
 address information,Not Use case
+adjust delivery,Use case
+adjust exposure,Use case
 adjust option,Not Use case
+adjust that,Use case
 administer quizzes,Not Use case
 adopt pet,Not Use case
+allow customers,Use case
 allow events,Not Use case
 avoid errors,Not Use case
 bill clients,Not Use case
@@ -64,7 +91,6 @@ compare quotes,Not Use case
 complete assignments,Use case
 complete lessons,Not Use case
 complete process,Not Use case
-complete process,Use case
 complete profile,Use case
 complete quiz,Use case
 complete survey,Use case
@@ -89,18 +115,38 @@ customize item,Use case
 customize itinerary,Use case
 customize laptop,Use case
 customize options,Use case
+design home,Use case
 determine elevations,Not Use case
 discuss symptoms,Not Use case
 draft documents,Not Use case
+earn rewards,Use case
 enable users,Not Use case
 enhance images,Not Use case
 enhance photos,Not Use case
+ensure work,Use case
+enter information,Use case
+enter store,Use case
+evaluate performance,Use case
 execute campaigns,Not Use case
+feel angry,Not Use case
+feel excited,Not Use case
+feel exhausted,Not Use case
+feel happy,Not Use case
+feel sad,Not Use case
+find center,Use case
+find deals,Use case
+find parts,Use case
+find route,Use case
+find technician,Use case
+find way,Use case
 follow users,Use case
+forecast performance,Use case
 format text,Use case
 further understanding,Not Use case
 generate lists,Use case
+generate report,Use case
 get directions,Use case
+get quotes,Use case
 give option,Not Use case
 grade assignments,Not Use case
 have option,Not Use case
@@ -112,10 +158,12 @@ improve writing,Use case
 include options,Not Use case
 initiate loans,Use case
 interpret data,Not Use case
+invest money,Use case
 invite guests,Use case
 invite participants,Use case
 join class,Not Use case
 join clubs,Use case
+join groups,Use case
 join lobby,Not Use case
 join meeting,Use case
 keep track,Use case
@@ -125,14 +173,17 @@ learn platform,Not Use case
 learn resources,Not Use case
 leave reviews,Use case
 leave town,Not Use case
+lend money,Use case
 link card,Use case
 list items,Use case
 list pets,Not Use case
 list properties,Not Use case
-list properties,Use case
-log calls,Use case
+list property,Use case
+log calls,Not Use case
 log information,Not Use case
 log sessions,Use case
+love animal,Not Use case
+mail art,Use case
 mail audiobook,Use case
 mail bike,Not Use case
 mail items,Use case
@@ -141,6 +192,7 @@ make appointment,Use case
 make arrangements,Use case
 make decision,Not Use case
 make donation,Use case
+make offers,Use case
 make payments,Use case
 make purchase,Not Use case
 make reservation,Use case
@@ -148,22 +200,27 @@ manage account,Use case
 manage appointments,Use case
 manage behavior,Use case
 manage bills,Use case
+manage bookings,Use case
 manage budget,Use case
 manage campaigns,Use case
 manage collections,Use case
 manage data,Not Use case
-manage data,Use case
+manage donations,Use case
 manage finances,Use case
 manage leads,Use case
+manage listings,Use case
 manage movement,Use case
 manage portfolio,Use case
+manage properties,Use case
 manage relationships,Use case
 manage resources,Not Use case
 manage sales,Use case
+manage shipping,Use case
 manage tasks,Use case
 master music,Not Use case
 match qualifications,Use case
 mix music,Not Use case
+model software,Use case
 monitor process,Use case
 monitor progress,Use case
 monitor property,Use case
@@ -174,14 +231,18 @@ open app,Not Use case
 optimize performance,Use case
 optimize production,Use case
 order app,Not Use case
+order bottle,Use case
 order bunch,Use case
 order drugs,Use case
+order food,Use case
 order groceries,Use case
 order ingredients,Use case
 order kit,Use case
 order kits,Use case
 order meal,Use case
+order meals,Use case
 order pizza,Use case
+order subscription,Use case
 organize documents,Not Use case
 organize events,Use case
 organize notes,Use case
@@ -207,12 +268,37 @@ purchase some,Not Use case
 read review,Not Use case
 receive e,Not Use case
 receive support,Not Use case
+record song,Use case
+redeem discounts,Use case
+redeem rewards,Use case
+remind parties,Use case
+rent audiobook,Use case
+rent bicycles,Use case
+rent bike,Use case
+rent car,Use case
+rent cars,Use case
+rent clothing,Use case
+rent homes,Use case
+rent item,Use case
+rent piece,Use case
+rent vehicles,Use case
+request art,Use case
+request audiobooks,Use case
+request clothing,Use case
+request instructions,Use case
+request ride,Use case
+request rides,Use case
+request services,Use case
+request time,Use case
 require users,Not Use case
+research destinations,Use case
+research investments,Use case
+reserve car,Use case
 reserve it,Use case
 resolve complaints,Not Use case
 resolve inquiries,Use case
 resolve issue,Not Use case
-resolve issues,Use case
+resolve issues,Not Use case
 restrict activity,Not Use case
 resume builders,Use case
 resume tools,Use case
@@ -235,26 +321,78 @@ save recipe,Use case
 save recipes,Use case
 save them,Use case
 scan code,Use case
+Scenario,Classification
 schedule appointment,Use case
 schedule appointments,Use case
 schedule call,Use case
 schedule class,Use case
+schedule consultation,Use case
+schedule delivery,Use case
+schedule interview,Use case
+schedule interviews,Use case
+schedule meeting,Use case
+schedule pickup,Use case
+schedule posts,Use case
+schedule reservation,Use case
+schedule routine,Use case
+schedule session,Use case
+schedule sessions,Use case
+schedule visit,Use case
 screen interviews,Not Use case
 search browser,Not Use case
+search database,Use case
+search website,Use case
+select airports,Use case
+select car,Use case
+select flight,Use case
+select hotel,Use case
+select items,Use case
+select language,Use case
+select movie,Use case
 select preferences,Use case
 select seat,Use case
 sell properties,Use case
 sell securities,Not Use case
 sell tickets,Not Use case
 send gifts,Not Use case
+set controls,Use case
+set dates,Use case
+set departure,Use case
+set goals,Use case
+set pickup,Use case
+set reminders,Use case
+share files,Use case
+share recipe,Use case
 share rides,Not Use case
+share survey,Use case
+show location,Use case
+sign documents,Use case
 skip tracks,Not Use case
+specify address,Use case
+specify location,Use case
 start prices,Not Use case
+store data,Use case
+store history,Use case
+store preferences,Use case
+submit applications,Use case
+submit coursework,Use case
+submit resume,Use case
+suggest friends,Use case
+take courses,Use case
+take quizzes,Use case
+takeout food,Use case
 ticket platform,Not Use case
 ticket system,Not Use case
+touch book,Not Use case
+touch card,Not Use case
+touch paper,Not Use case
+touch pen,Not Use case
+trace history,Use case
+track app,Use case
 track availability,Use case
 track checkouts,Use case
 track donations,Use case
+track exercise,Use case
 track exercise,Use case
 track food,Use case
 track hours,Use case
@@ -262,6 +400,7 @@ track levels,Use case
 track metrics,Use case
 track orders,Not Use case
 track package,Use case
+track portfolios,Use case
 track portfolios,Use case
 track progress,Use case
 track ride,Use case
@@ -285,41 +424,68 @@ use calorie,Not Use case
 use card,Use case
 use chatbot,Not Use case
 use checker,Use case
+use device,Use case
 use editor,Use case
 use engine,Not Use case
 use environment,Not Use case
+use fonts,Use case
 use food,Not Use case
 use gateway,Not Use case
 use grammar,Not Use case
 use hotel,Not Use case
 use HRIS,Not Use case
+use interface,Use case
 use language,Not Use case
 use maker,Not Use case
 use manager,Not Use case
+use phones,Use case
 use platform,Not Use case
 use site,Not Use case
 use software,Use case
+use support,Use case
 use system,Not Use case
 use system,Not Use case
 use time,Not Use case
 use tool,Not Use case
-use tool,Not Use case
 use weather,Not Use case
 use website,Use case
+use word,Use case
+view balance,Use case
 view balances,Not Use case
+view details,Use case
+view images,Use case
 view information,Use case
+view matches,Use case
+view records,Use case
+visit bakery,Use case
+visit club,Use case
 visit food,Not Use case
+visit library,Use case
 visit marketplace,Not Use case
+visit pharmacy,Use case
+visit store,Use case
+visit website,Use case
 visualize data,Use case
+visualize designs,Use case
+watch movie,Use case
+watch videos,Use case
 watch what,Not Use case
 win auction,Not Use case
-feel happy,Not Use case
-feel sad,Not Use case
-feel angry,Not Use case
-feel excited,Not Use case
-feel exhausted,Not Use case
-love animal,Not Use case
-touch book,Not Use case
-touch pen,Not Use case
-touch card,Not Use case
-touch paper,Not Use case
+get directions,Use case
+choose date,Use case
+have visits,Use case
+choose delivery,Use case
+initiate loans,Use case
+choose items,Use case
+invite guests,Use case
+choose options,Use case
+join clubs,Use case
+choose seat,Use case
+join meeting,Use case
+choose type,Use case
+leave reviews,Use case
+collect points,Use case
+link card,Use case
+collect responses,Use case
+list properties,Use case
+compare prices,Use case
