@@ -1,20 +1,24 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/nav/navbar/Navbar";
 import "./UserInput.css";
 import axios from "axios";
 import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
+import DiagramDictionaryContext from "../../context/DiagramDictionaryContext";
 import Loading from "../../components/alert/Loading";
 import AlertMsg from "../../components/alert/AlertMsg";
 
 const UserInput = () => {
     const [formData, setFormData] = useState({});
+    const [text, setText] = useState("");
     const [showLoading, setShowLoading] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [errorMsg, setErrorMsg] = useState();
     const navigate = useNavigate();
+    const fileInputField = useRef(null);
     const { setResponseData } = useContext(DiagramMarkdownContext); // Context
+    const { setDiagramDictionary } = useContext(DiagramDictionaryContext); // Context
 
     // add textarea value to state
     const handleChange = (event) => {
@@ -24,6 +28,23 @@ const UserInput = () => {
         });
     };
 
+    // add file data
+    const handleFile = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", (event) => {
+            const text = event.target.result;
+            setText(text);
+
+            setFormData({
+                ...formData,
+                ["userinput-textarea"]: event.target.result,
+            });
+        });
+        reader.readAsText(file);
+    };
+    
     // handle generate diagram btn click
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -46,6 +67,7 @@ const UserInput = () => {
             .then((response) => {
                 console.log("res " + response.data);
                 setResponseData(response.data.link);
+                setDiagramDictionary(JSON.parse(response.data.dictionary));
                 setShowLoading(false);
                 navigate("/download");
             })
@@ -68,7 +90,8 @@ const UserInput = () => {
                     <div className="form-outline">
                         <textarea
                             name="userinput-textarea"
-                            onChange={handleChange}
+                            defaultValue={text}
+                            onChange={(event) => handleChange(event)}
                             className="form-control border border-5 rounded"
                             id="textarea"
                             rows="6"
@@ -78,7 +101,8 @@ const UserInput = () => {
                     {showLoading && <Loading msg="Generating Diagram" />}
 
                     <div className="d-flex justify-content-around mt-4">
-                        <button type="button" className="btn btn-success">
+                        <input type="file" accept=".txt" className="d-none" ref={fileInputField} onChange={(event) => handleFile(event)} />
+                        <button type="button" className="btn btn-success" onClick={() => fileInputField.current.click()}>
                             <i className="fa fa-file-arrow-up ms-1"></i> import file
                         </button>
                         <button type="button" className="btn btn-danger" onClick={handleSubmit}>
