@@ -1,4 +1,8 @@
 .userInput-container{
-    margin: 2rem 27rem;
+    padding: 2rem 27vw;
 }
-
+.main_container{
+    /* width: 100vw; */
+    height: 91vh;
+    background-color: #57C5B6;
+}
