@@ -8,6 +8,7 @@ import DiagramMarkdownContext from "../../context/DiagramMarkdownContext";
 import DiagramDictionaryContext from "../../context/DiagramDictionaryContext";
 import Loading from "../../components/alert/Loading";
 import AlertMsg from "../../components/alert/AlertMsg";
+import Footer from "../../components/footer/Footer";
 
 const UserInput = () => {
     const [formData, setFormData] = useState({});
@@ -44,7 +45,7 @@ const UserInput = () => {
         });
         reader.readAsText(file);
     };
-    
+
     // handle generate diagram btn click
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -83,7 +84,7 @@ const UserInput = () => {
         <div>
             <Navbar />
             {showAlert && <AlertMsg type="warning" text={errorMsg} setShowAlert={setShowAlert} />}
-            <div>
+            <div className="main_container">
                 <div className="userInput-container">
                     <h2 className="mb-4">GenUML</h2>
 
@@ -94,7 +95,7 @@ const UserInput = () => {
                             onChange={(event) => handleChange(event)}
                             className="form-control border border-5 rounded"
                             id="textarea"
-                            rows="6"
+                            rows="10"
                             placeholder="Enter your senario.."
                         ></textarea>
                     </div>
@@ -111,7 +112,13 @@ const UserInput = () => {
                         </button>
                     </div>
                 </div>
+                <div className="mt-3">
+                    <h3>For Better Results:</h3>
+                    <p>Try to reduce pasive voice sentences.</p>
+                    <p>Try to write in simple sentences.</p>
+                </div>
             </div>
+            <Footer />
         </div>
     );
 };

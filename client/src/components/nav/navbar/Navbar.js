@@ -29,14 +29,21 @@ function Navbar(props) {
     return (
         <div className="nav-bar">
             <div className="left">
-                <Link to="/">GenUML</Link>
+                <Link to="/" className="nav_items">
+                    GenUML
+                </Link>
             </div>
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">
+                &#9776;
+            </label>
             <div className="right">
                 <div className="about">About</div>
                 <div className="generate">
-                    <Link to="/userRequirment">Generate</Link>
+                    <Link to="/userRequirment" className="nav_items">
+                        Generate
+                    </Link>
                 </div>
-
                 {isLoggedIn ? (
                     <div className="profile">
                         <p className="profile-name">Rukshan</p>
@@ -47,7 +54,9 @@ function Navbar(props) {
                     </div>
                 ) : (
                     <div className="login">
-                        <Link to="/sign-in">Login</Link>
+                        <Link to="/sign-in" className="nav_items">
+                            Login
+                        </Link>
                     </div>
                 )}
             </div>
