@@ -3,12 +3,12 @@
 }
 #hero {
   width: 100%;
-  /* background-image: url("../img/hero-bg.png"); */
+  background-color: #57C5B6;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right top;
-  margin-top: 70px;
-  padding: 60px 0;
+  padding: 110px 0;
+  height: 90vh;
 }
 
 #hero h1 {
@@ -54,17 +54,17 @@
 /* Steps boxes */
 .icon-boxes {
   padding: 60px 0;
-  /* width: 90vw; */
-  background: #b17d7d;
+  background: #1A5F7A;
+  flex-wrap: wrap;
 }
 
 .icon-box {
   width: 20rem;
   padding: 35px 20px;
-  margin: 0 35px;
+  margin: 10px 35px;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background: #ededed;
   box-shadow: 0 0 29px 0 rgba(16, 61, 94, 0.08);
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
@@ -96,4 +96,17 @@
   font-size: 36px;
   line-height: 1;
   color: #2487ce;
+}
+
+@media screen and (max-width: 993px) {
+  #hero{
+    padding: 50px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon-box {
+    width: 13rem;
+    margin-bottom: 10%;
+  }
 }

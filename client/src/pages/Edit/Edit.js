@@ -70,17 +70,31 @@ const Edit = () => {
         <div>
             <Navbar />
             {showAlert && <AlertMsg type="warning" text="Error occured.. pls try again.." setShowAlert={setShowAlert} />}
-            <div className="mb-4">
+            <div className="main_container">
                 <h2>Edit your diagram</h2>
-                <div className="main-container d-flex justify-content-center border border-5 rounded p-3">
+                <div className="box-container d-flex justify-content-center border border-5 rounded p-3">
                     {/* options panel */}
                     <div className="options">
                         {/* ADD btns */}
                         <div className="d-flex justify-content-around">
-                            <button type="button" className="btn btn-primary px-4" onClick={handleAddActor}>
+                            <button
+                                type="button"
+                                className="btn btn-primary px-4"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Add New Actor"
+                                onClick={handleAddActor}
+                            >
                                 <i className="fa-solid fa-person"></i>
                             </button>
-                            <button type="button" className="btn btn-primary px-4" onClick={handleAddUC}>
+                            <button
+                                type="button"
+                                className="btn btn-primary px-4"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Add New Usecase"
+                                onClick={handleAddUC}
+                            >
                                 <i className="fa-regular fa-message"></i>
                             </button>
                         </div>
@@ -90,11 +104,26 @@ const Edit = () => {
 
                         {/* View/Save btns */}
                         <div className="d-flex justify-content-around">
-                            <button type="button" className="btn btn-success px-4" onClick={handleView}>
+                            <button
+                                type="button"
+                                className="btn btn-primary px-4"
+                                style={{ backgroundColor: "#002B5B", borderColor: "#002B5B" }}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="View Updated Diagram"
+                                onClick={handleView}
+                            >
                                 <i className="fa-sharp fa-regular fa-eye"></i> View
                             </button>
                             <Link to="/download">
-                                <button type="button" className="btn btn-danger px-4">
+                                <button
+                                    type="button"
+                                    className="btn btn-primary px-4"
+                                    style={{ backgroundColor: "#002B5B", borderColor: "#002B5B" }}
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Go to download page"
+                                >
                                     <i className="fa-solid fa-arrow-right-to-bracket"></i> Save
                                 </button>
                             </Link>

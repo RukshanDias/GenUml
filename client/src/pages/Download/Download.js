@@ -42,7 +42,7 @@ const Download = () => {
     return (
         <div>
             <Navbar />
-            <div>
+            <div className="main_container">
                 <div className="download-container">
                     <h2 className="mb-0">GenUML</h2>
                     <p>Final output of your use case diagram</p>

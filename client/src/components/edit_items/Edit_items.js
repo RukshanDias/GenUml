@@ -117,7 +117,14 @@ const Edit_items = forwardRef((props, ref) => {
                                 onChange={(event) => handleActorEdit(event, key)}
                             />
 
-                            <button type="button" className="btn btn-primary px-2" onClick={() => removeActor(key)}>
+                            <button
+                                type="button"
+                                className="btn btn-danger px-2"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Delete Actor"
+                                onClick={() => removeActor(key)}
+                            >
                                 <i class="fa-regular fa-trash-can"></i>
                             </button>
                         </div>
@@ -130,13 +137,36 @@ const Edit_items = forwardRef((props, ref) => {
                                     style={{ width: "60%" }}
                                     onChange={(event) => handleUCEdit(event, key, subkey)}
                                 />
-                                <button type="button" className="btn btn-primary px-2" onClick={() => moveDown(key, subkey)}>
+                                <button
+                                    type="button"
+                                    className="btn btn-primary px-2 mx-1 my-2"
+                                    style={{ backgroundColor: "#159895", borderColor: "#159895" }}
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Move Down Usecase"
+                                    onClick={() => moveDown(key, subkey)}
+                                >
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </button>
-                                <button type="button" className="btn btn-primary px-2" onClick={() => moveUp(key, subkey)}>
+                                <button
+                                    type="button"
+                                    className="btn btn-primary px-2 mx-1 my-2"
+                                    style={{ backgroundColor: "#159895", borderColor: "#159895" }}
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Move Up Usecase"
+                                    onClick={() => moveUp(key, subkey)}
+                                >
                                     <i class="fa-solid fa-chevron-up"></i>
                                 </button>
-                                <button type="button" className="btn btn-primary px-2" onClick={() => removeUsecase(key, subkey)}>
+                                <button
+                                    type="button"
+                                    className="btn btn-danger px-2 mx-1 my-2"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Delete Usecase"
+                                    onClick={() => removeUsecase(key, subkey)}
+                                >
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </div>

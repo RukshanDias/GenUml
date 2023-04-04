@@ -39,27 +39,27 @@ const Home = () => {
                                 <i className="fa-repeat-1">1</i>
                             </div>
                             <h4 className="title">Enter</h4>
-                            <p className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <p className="description">Enter your user story or import as a file.</p>
                         </div>
                     </div>
 
                     <div className="" data-aos="zoom-in" data-aos-delay="200">
                         <div className="icon-box">
                             <div className="icon">
-                                <i className="ri-stack-line"></i>
+                                <i className="ri-stack-line">2</i>
                             </div>
                             <h4 className="title">Edit</h4>
-                            <p className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <p className="description">Edit if you need some change.</p>
                         </div>
                     </div>
 
                     <div className="" data-aos="zoom-in" data-aos-delay="200">
                         <div className="icon-box">
                             <div className="icon">
-                                <i className="ri-stack-line"></i>
+                                <i className="ri-stack-line">3</i>
                             </div>
                             <h4 className="title">Download</h4>
-                            <p className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <p className="description">Download diagram as a PNG file.</p>
                         </div>
                     </div>
                 </div>
