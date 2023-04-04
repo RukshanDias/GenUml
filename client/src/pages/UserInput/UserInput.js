@@ -75,7 +75,7 @@ const UserInput = () => {
             .catch((error) => {
                 console.log(error);
                 setShowLoading(false);
-                setErrorMsg("error occured.. Pls try again later..");
+                setErrorMsg("Paragraph not clear..Pls try a differnt description..");
                 setShowAlert(true);
             });
     }
