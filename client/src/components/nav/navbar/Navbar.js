@@ -1,29 +1,20 @@
 import React from "react";
 import "./Navbar.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AccountBox from "../accountBox/AccountBox";
-import AccountContext from "../../../context/AccountContext";
-import axios from "axios";
 
-function Navbar(props) {
+function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState();
     const [isAccountBoxOpen, setIsAccountBoxOpen] = useState(false);
-    const { accountData } = useContext(AccountContext); // Context
 
     useEffect(() => {
-        setIsLoggedIn(props.isLogin);
-        console.log("user logged -> " + props.isLogin);
-        console.log(accountData);
-        axios
-            .get("http://localhost/GenUML/Login_Register/session.php", {
-                withCredentials: true,
-            })
-            .then((response) => {
-                const data = response.data;
-                console.log(response.data.email);
-            });
+        const userData = JSON.parse(sessionStorage.getItem("userData"));
+        if (userData) {
+            setUserData(userData);
+            setIsLoggedIn(true);
+        }
     }, []);
 
     return (
@@ -40,17 +31,18 @@ function Navbar(props) {
             <div className="right">
                 <div className="about">About</div>
                 <div className="generate">
-                    <Link to="/userRequirment" className="nav_items">
+                    {/* if not logged ask to login first  */}
+                    <Link to={isLoggedIn ? "/userRequirment" : "/sign-in"} className="nav_items">
                         Generate
                     </Link>
                 </div>
                 {isLoggedIn ? (
                     <div className="profile">
-                        <p className="profile-name">Rukshan</p>
+                        <p className="profile-name">{userData["fname"]}</p>
                         <div className="profile-circle" onClick={() => setIsAccountBoxOpen(!isAccountBoxOpen)}>
-                            <p className="circle-inner">CV</p>
+                            <p className="circle-inner">{userData.fname[0] + userData.lname[0]}</p>
                         </div>
-                        {isAccountBoxOpen && <AccountBox />}
+                        {isAccountBoxOpen && <AccountBox setLogin={setIsLoggedIn} />}
                     </div>
                 ) : (
                     <div className="login">

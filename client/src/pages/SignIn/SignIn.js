@@ -1,19 +1,19 @@
 import React from "react";
 import "./SignIn.css";
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/nav/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
-import AccountContext from "../../context/AccountContext";
 import AlertMsg from "../../components/alert/AlertMsg";
 import Loading from "../../components/alert/Loading";
 
 const SignIn = () => {
-    const { setAccountData } = useContext(AccountContext); // Context
     const [showAlert, setShowAlert] = useState(false);
     const [errorMsg, setErrorMsg] = useState();
     const [showLoading, setShowLoading] = useState(false);
+    const navigate = useNavigate();
 
     const isFormValid = (data) => {
         let isValid = true;
@@ -39,17 +39,14 @@ const SignIn = () => {
     };
 
     const sendData = (data) => {
-        console.log("sending data");
         setShowLoading(true);
         axios
             .post("http://localhost/GenUML/Login_Register/login.php", data)
             .then((response) => {
-                console.log(response.data);
-                setAccountData(response.data);
                 setShowLoading(false);
                 if (response.data) {
-                    alert("succesfully logged in");
-                    console.log(response.data.email);
+                    sessionStorage.setItem("userData", JSON.stringify(response.data)); // create session
+                    navigate("/");
                 } else {
                     setErrorMsg("Invalid Credentials.. Pls try again..");
                     setShowAlert(true);
