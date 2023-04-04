@@ -7,7 +7,8 @@
   display: flex;
   flex-flow: row nowrap;
   padding: 20px 30px;
-  background-color: antiquewhite;
+  background-color: #002B5B; /*background color*/
+  color: whitesmoke ; /*font color*/
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -54,4 +55,42 @@
   height: 2.5rem;
   width: 2.5rem;
   font-size: 15px;
+}
+
+.nav_items{
+  text-decoration: none;
+  color: whitesmoke ; /*font color*/
+}
+
+/* navbar toggle */
+input[type=checkbox]{
+  display: none;
+}
+.hamburger {
+  display: none;
+  position: absolute;
+  right: 10%;
+  font-size: 24px;
+  user-select: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .right {
+    display: none !important;
+    /* opacity: 0; */
+  }
+
+  /* navbar toggle */
+  input[type=checkbox]:checked ~ .right{
+      display: block !important;
+      margin: auto;
+      /* opacity: 1; */
+  }
+  .hamburger {
+    display: block;
+  }
+  .profile-circle{
+    display: none;
+  }
 }
