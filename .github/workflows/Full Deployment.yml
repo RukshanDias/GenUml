@@ -24,4 +24,9 @@ jobs:
           host: 'chanuka.northeurope.cloudapp.azure.com'
           username: 'chanuka'
           password: ${{ secrets.VM_PASSWORD }}
-          script: 'cd /var/www/html/GenUML && git pull'
+         
+          
+      - name: Deploy code
+        run: |
+          ssh chanuka@68.219.216.161 "cd /var/www/html/GenUML && git pull"
+        
