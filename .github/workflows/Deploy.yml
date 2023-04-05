@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy code
         run: |
-          ssh chanuka@68.219.216.161 "cd C:\xampp\htdocs\GenUML"
+          ssh chanuka@68.219.216.161 "cd /var/www/html/GenUML && git pull"
