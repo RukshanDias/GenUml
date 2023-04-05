@@ -11,7 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // run python file
     $result = shell_exec("python $python_file \"$para\"");
     
-    $lines = explode("\n\n\n", $result);
+    if ($result !== null) {
+        $lines = explode("\n\n\n", $result);
+    } else {
+        $lines = array();
+    }
 
     // error handling - check isset
     if (isset($lines[0])) {
