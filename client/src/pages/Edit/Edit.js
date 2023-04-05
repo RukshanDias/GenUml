@@ -47,8 +47,9 @@ const Edit = () => {
     const handleView = () => {
         const data = new FormData();
         data.append("dictionary", JSON.stringify(diagramDictionary));
+        const url = `${process.env.REACT_APP_API}/editDiagram.php`;
         axios
-            .post("http://localhost/GenUML/editDiagram.php", data)
+            .post(url, data)
             .then((response) => {
                 setResponseData(response.data.code);
             })

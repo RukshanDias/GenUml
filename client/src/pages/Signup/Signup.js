@@ -52,8 +52,9 @@ const Signup = () => {
 
     const sendData = (data) => {
         setShowLoading(true);
+        const url = `${process.env.REACT_APP_API}/Login_Register/register.php`;
         axios
-            .post("http://localhost/GenUML/Login_Register/register.php", data)
+            .post(url, data)
             .then((response) => {
                 console.log(response.data);
                 setShowLoading(false);
