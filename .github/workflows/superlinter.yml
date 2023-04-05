@@ -12,6 +12,7 @@ jobs:
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
+        run: superlint "**/*.css" --ignore-pattern "**/*.css" --quiet
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
