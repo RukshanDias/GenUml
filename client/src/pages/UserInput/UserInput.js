@@ -63,8 +63,9 @@ const UserInput = () => {
         const data1 = new FormData();
         data1.append("userinput-textarea", data["userinput-textarea"]);
         console.log(data1);
+        const url = `${process.env.REACT_APP_API}/generateDiagram.php`;
         axios
-            .post("http://localhost/GenUML/generateDiagram.php", data1)
+            .post(url, data1)
             .then((response) => {
                 console.log("res " + response.data);
                 setResponseData(response.data.link);
