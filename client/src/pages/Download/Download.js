@@ -16,7 +16,7 @@ const Download = () => {
     const encodeDiagram = (plantUmlCode) => {
         console.log(plantUmlCode);
         const encodedCode = plantUmlEncoder.encode(plantUmlCode);
-        const url = `http://www.plantuml.com/plantuml/img/${encodedCode}`;
+        const url = `https://www.plantuml.com/plantuml/img/${encodedCode}`;
         return url;
     };
 
