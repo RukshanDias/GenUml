@@ -11,3 +11,8 @@
   height: 1px;
   background: #8b8989;
 }
+@media screen and (max-width: 600px) {
+  .login-form{
+    width: 70vw;
+  }
+}
