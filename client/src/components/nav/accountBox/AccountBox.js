@@ -3,7 +3,6 @@ import "./AccountBox.css";
 import { Link } from "react-router-dom";
 
 const AccountBox = (props) => {
-
     const handleLogout = () => {
         sessionStorage.removeItem("userData");
         props.setLogin(false);
@@ -12,8 +11,6 @@ const AccountBox = (props) => {
     return (
         <div className="profile-options">
             <ul>
-                <li>Account</li>
-                <li>Settings</li>
                 <li onClick={handleLogout}>
                     <Link to="/sign-in" className="router-link">
                         Logout
