@@ -1,0 +1,14 @@
+name: genuml-api
+
+build:
+  env: production
+  language: php
+  framework: none
+  plugins:
+    - mysql
+    - phpmyadmin
+    - python3
+run:
+  web: vendor/bin/heroku-php-apache2 public/
+  db: docker-compose up -d db
+  phpmyadmin: docker-compose up -d phpmyadmin
